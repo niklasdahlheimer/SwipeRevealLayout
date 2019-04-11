@@ -1,4 +1,7 @@
 ## SwipeRevealLayout
+
+[![](https://jitpack.io/v/Android-library-copy-dependencies/SwipeRevealLayout.svg)](https://jitpack.io/#Android-library-copy-dependencies/SwipeRevealLayout)
+
 A layout that you can swipe/slide to show another layout.
 
 ### Demo
