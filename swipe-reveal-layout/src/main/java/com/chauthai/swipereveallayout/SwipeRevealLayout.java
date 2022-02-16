@@ -37,6 +37,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.IntDef;
+import androidx.annotation.NonNull;
 import androidx.core.view.GestureDetectorCompat;
 import androidx.core.view.ViewCompat;
 import androidx.customview.widget.ViewDragHelper;
@@ -44,7 +45,8 @@ import androidx.customview.widget.ViewDragHelper;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
-@SuppressLint("RtlHardcoded")
+@SuppressWarnings("unused")
+@SuppressLint("RtlHardcoded,unused")
 public class SwipeRevealLayout extends ViewGroup {
     // These states are used only for ViewBindHelper
     protected static final int STATE_CLOSE = 0;
@@ -84,22 +86,22 @@ public class SwipeRevealLayout extends ViewGroup {
     /**
      * The rectangle position of the main view when the layout is closed.
      */
-    private Rect mRectMainClose = new Rect();
+    private final Rect mRectMainClose = new Rect();
 
     /**
      * The rectangle position of the main view when the layout is opened.
      */
-    private Rect mRectMainOpen = new Rect();
+    private final Rect mRectMainOpen = new Rect();
 
     /**
      * The rectangle position of the secondary view when the layout is closed.
      */
-    private Rect mRectSecClose = new Rect();
+    private final Rect mRectSecClose = new Rect();
 
     /**
      * The rectangle position of the secondary view when the layout is opened.
      */
-    private Rect mRectSecOpen = new Rect();
+    private final Rect mRectSecOpen = new Rect();
 
     /**
      * The minimum distance (px) to the closest drag edge that the SwipeRevealLayout
@@ -163,6 +165,7 @@ public class SwipeRevealLayout extends ViewGroup {
      * No-op stub for {@link SwipeListener}. If you only want ot implement a subset
      * of the listener methods, you can extend this instead of implement the full interface.
      */
+    @SuppressWarnings("unused")
     public static class SimpleSwipeListener implements SwipeListener {
         @Override
         public void onClosed(SwipeRevealLayout view) {
@@ -437,7 +440,7 @@ public class SwipeRevealLayout extends ViewGroup {
             }
 
             if (heightMode == MeasureSpec.AT_MOST) {
-                desiredHeight = (desiredHeight > measuredHeight)? measuredHeight : desiredHeight;
+                desiredHeight = Math.min(desiredHeight, measuredHeight);
             }
         }
 
@@ -906,7 +909,7 @@ public class SwipeRevealLayout extends ViewGroup {
 
     private final ViewDragHelper.Callback mDragHelperCallback = new ViewDragHelper.Callback() {
         @Override
-        public boolean tryCaptureView(View child, int pointerId) {
+        public boolean tryCaptureView(@NonNull View child, int pointerId) {
             mAborted = false;
 
             if (mLockDrag)
@@ -917,7 +920,7 @@ public class SwipeRevealLayout extends ViewGroup {
         }
 
         @Override
-        public int clampViewPositionVertical(View child, int top, int dy) {
+        public int clampViewPositionVertical(@NonNull View child, int top, int dy) {
             switch (mDragEdge) {
                 case DRAG_EDGE_TOP:
                     return Math.max(
@@ -937,7 +940,7 @@ public class SwipeRevealLayout extends ViewGroup {
         }
 
         @Override
-        public int clampViewPositionHorizontal(View child, int left, int dx) {
+        public int clampViewPositionHorizontal(@NonNull View child, int left, int dx) {
             switch (mDragEdge) {
                 case DRAG_EDGE_RIGHT:
                     return Math.max(
@@ -957,7 +960,7 @@ public class SwipeRevealLayout extends ViewGroup {
         }
 
         @Override
-        public void onViewReleased(View releasedChild, float xvel, float yvel) {
+        public void onViewReleased(@NonNull View releasedChild, float xvel, float yvel) {
             final boolean velRightExceeded = pxToDp((int) xvel) >= mMinFlingVelocity;
             final boolean velLeftExceeded = pxToDp((int) xvel) <= -mMinFlingVelocity;
             final boolean velUpExceeded = pxToDp((int) yvel) <= -mMinFlingVelocity;
@@ -1051,7 +1054,7 @@ public class SwipeRevealLayout extends ViewGroup {
         }
 
         @Override
-        public void onViewPositionChanged(View changedView, int left, int top, int dx, int dy) {
+        public void onViewPositionChanged(@NonNull View changedView, int left, int top, int dx, int dy) {
             super.onViewPositionChanged(changedView, left, top, dx, dy);
             if (mMode == MODE_SAME_LEVEL) {
                 if (mDragEdge == DRAG_EDGE_LEFT || mDragEdge == DRAG_EDGE_RIGHT) {
@@ -1162,6 +1165,7 @@ public class SwipeRevealLayout extends ViewGroup {
         return (int) (px / ((float) metrics.densityDpi / DisplayMetrics.DENSITY_DEFAULT));
     }
 
+    @SuppressWarnings("SameParameterValue")
     private int dpToPx(int dp) {
         Resources resources = getContext().getResources();
         DisplayMetrics metrics = resources.getDisplayMetrics();
