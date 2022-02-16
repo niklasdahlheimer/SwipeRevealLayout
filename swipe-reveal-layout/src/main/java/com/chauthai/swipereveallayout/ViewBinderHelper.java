@@ -71,14 +71,10 @@ public class ViewBinderHelper {
         mapLayouts.put(id, swipeLayout);
 
         swipeLayout.abort();
-        swipeLayout.setDragStateChangeListener(new SwipeRevealLayout.DragStateChangeListener() {
-            @Override
-            public void onDragStateChanged(int state) {
-                mapStates.put(id, state);
-
-                if (openOnlyOne) {
-                    closeOthers(id, swipeLayout);
-                }
+        swipeLayout.setDragStateChangeListener(state -> {
+            mapStates.put(id, state);
+            if (openOnlyOne) {
+                closeOthers(id, swipeLayout);
             }
         });
 
