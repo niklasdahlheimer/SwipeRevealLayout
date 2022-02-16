@@ -48,9 +48,9 @@ import java.util.Set;
 public class ViewBinderHelper {
     private static final String BUNDLE_MAP_KEY = "ViewBinderHelper_Bundle_Map_Key";
 
-    private Map<String, Integer> mapStates = Collections.synchronizedMap(new HashMap<String, Integer>());
-    private Map<String, SwipeRevealLayout> mapLayouts = Collections.synchronizedMap(new HashMap<String, SwipeRevealLayout>());
-    private Set<String> lockedSwipeSet = Collections.synchronizedSet(new HashSet<String>());
+    private Map<String, Integer> mapStates = Collections.synchronizedMap(new HashMap<>());
+    private final Map<String, SwipeRevealLayout> mapLayouts = Collections.synchronizedMap(new HashMap<>());
+    private final Set<String> lockedSwipeSet = Collections.synchronizedSet(new HashSet<>());
 
     private volatile boolean openOnlyOne = false;
     private final Object stateChangeLock = new Object();
