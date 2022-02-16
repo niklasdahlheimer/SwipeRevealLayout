@@ -1,25 +1,25 @@
 /**
- The MIT License (MIT)
-
- Copyright (c) 2016 Chau Thai
-
- Permission is hereby granted, free of charge, to any person obtaining a copy
- of this software and associated documentation files (the "Software"), to deal
- in the Software without restriction, including without limitation the rights
- to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- copies of the Software, and to permit persons to whom the Software is
- furnished to do so, subject to the following conditions:
-
- The above copyright notice and this permission notice shall be included in all
- copies or substantial portions of the Software.
-
- THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
- AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
- LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
- SOFTWARE.
+ * The MIT License (MIT)
+ * <p>
+ * Copyright (c) 2016 Chau Thai
+ * <p>
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ * <p>
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ * <p>
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
  */
 
 package com.chauthai.swipereveallayout;
@@ -60,7 +60,7 @@ public class ViewBinderHelper {
      * when you bind your view holder with the data object.
      *
      * @param swipeLayout swipeLayout of the current view.
-     * @param id a string that uniquely defines the data object of the current view.
+     * @param id          a string that uniquely defines the data object of the current view.
      */
     public void bind(final SwipeRevealLayout swipeLayout, final String id) {
         if (isViewHolderBounded(swipeLayout, id)) return;
@@ -104,8 +104,9 @@ public class ViewBinderHelper {
 
     /**
      * Tests if the swipeLayout was bounded before, so do not bound again to avoid issues with frequently updated lists
+     *
      * @param swipeLayout the layout that should be bounded
-     * @param id the data that should be bounded
+     * @param id          the data that should be bounded
      * @return True if swipeLayout was bounded before, false otherwise
      */
     public boolean isViewHolderBounded(final SwipeRevealLayout swipeLayout, final String id) {
@@ -156,6 +157,7 @@ public class ViewBinderHelper {
 
     /**
      * Lock swipe for some layouts.
+     *
      * @param id a string that uniquely defines the data object.
      */
     public void lockSwipe(String... id) {
@@ -164,6 +166,7 @@ public class ViewBinderHelper {
 
     /**
      * Unlock swipe for some layouts.
+     *
      * @param id a string that uniquely defines the data object.
      */
     public void unlockSwipe(String... id) {
@@ -179,6 +182,7 @@ public class ViewBinderHelper {
 
     /**
      * Open a specific layout.
+     *
      * @param id unique id which identifies the data object which is bind to the layout.
      */
     public void openLayout(final String id) {
@@ -188,8 +192,7 @@ public class ViewBinderHelper {
             if (mapLayouts.containsKey(id)) {
                 final SwipeRevealLayout layout = mapLayouts.get(id);
                 layout.open(true);
-            }
-            else if (openOnlyOne) {
+            } else if (openOnlyOne) {
                 closeOthers(id, mapLayouts.get(id));
             }
         }
@@ -197,6 +200,7 @@ public class ViewBinderHelper {
 
     /**
      * Close a specific layout.
+     *
      * @param id unique id which identifies the data object which is bind to the layout.
      */
     public void closeLayout(final String id) {
@@ -212,7 +216,8 @@ public class ViewBinderHelper {
 
     /**
      * Close others swipe layout.
-     * @param id layout which bind with this data object id will be excluded.
+     *
+     * @param id          layout which bind with this data object id will be excluded.
      * @param swipeLayout will be excluded.
      */
     private void closeOthers(String id, SwipeRevealLayout swipeLayout) {
