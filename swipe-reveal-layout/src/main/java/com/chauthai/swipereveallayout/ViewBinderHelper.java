@@ -63,6 +63,8 @@ public class ViewBinderHelper {
      * @param id a string that uniquely defines the data object of the current view.
      */
     public void bind(final SwipeRevealLayout swipeLayout, final String id) {
+        if (isViewHolderBounded(swipeLayout, id)) return;
+
         if (swipeLayout.shouldRequestLayout()) {
             swipeLayout.requestLayout();
         }
@@ -98,6 +100,16 @@ public class ViewBinderHelper {
 
         // set lock swipe
         swipeLayout.setLockDrag(lockedSwipeSet.contains(id));
+    }
+
+    /**
+     * Tests if the swipeLayout was bounded before, so do not bound again to avoid issues with frequently updated lists
+     * @param swipeLayout the layout that should be bounded
+     * @param id the data that should be bounded
+     * @return True if swipeLayout was bounded before, false otherwise
+     */
+    public boolean isViewHolderBounded(final SwipeRevealLayout swipeLayout, final String id) {
+        return mapStates.containsKey(id) && mapLayouts.get(id) == swipeLayout;
     }
 
     /**
