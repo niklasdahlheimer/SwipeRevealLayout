@@ -1,6 +1,7 @@
 ## SwipeRevealLayout
 
 This Fork aims to keep the library dependencies up to date and has several optimizations for frequently updating lists.
+[![](https://jitpack.io/v/niklasdahlheimer/SwipeRevealLayout.svg)](https://jitpack.io/#niklasdahlheimer/SwipeRevealLayout)
 
 A layout that you can swipe/slide to show another layout.
 
