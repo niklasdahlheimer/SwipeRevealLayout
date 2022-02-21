@@ -1,8 +1,8 @@
-package com.niklasdahlheimer.swipereveallayoutdemo;
+package com.chauthai.swipereveallayoutdemo;
 
 import android.os.Bundle;
 import android.view.View;
-import android.widget.GridView;
+import android.widget.ListView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -14,15 +14,15 @@ import java.util.List;
 /**
  * Created by Chau Thai on 4/12/16.
  */
-public class GridActivity extends AppCompatActivity {
-    private GridAdapter adapter;
+public class ListDemoActivity extends AppCompatActivity {
+    private ListAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_grid);
+        setContentView(R.layout.activity_list);
         setupActionBar();
-        setupGrid();
+        setupList();
     }
 
     @Override
@@ -47,10 +47,10 @@ public class GridActivity extends AppCompatActivity {
         }
     }
 
-    private void setupGrid() {
-        GridView gridView = (GridView) findViewById(R.id.gridview);
-        adapter = new GridAdapter(this, createList(20));
-        gridView.setAdapter(adapter);
+    private void setupList() {
+        ListView listView = (ListView) findViewById(R.id.list_view);
+        adapter = new ListAdapter(this, createList(20));
+        listView.setAdapter(adapter);
     }
 
     private List<String> createList(int n) {

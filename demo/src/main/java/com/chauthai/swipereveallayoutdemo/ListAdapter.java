@@ -1,4 +1,4 @@
-package com.niklasdahlheimer.swipereveallayoutdemo;
+package com.chauthai.swipereveallayoutdemo;
 
 import android.content.Context;
 import android.os.Bundle;
