@@ -1,6 +1,6 @@
 ## SwipeRevealLayout
 
-[![](https://jitpack.io/v/Android-library-copy-dependencies/SwipeRevealLayout.svg)](https://jitpack.io/#Android-library-copy-dependencies/SwipeRevealLayout)
+This Fork aims to keep the library dependencies up to date and has several optimizations for frequently updating lists.
 
 A layout that you can swipe/slide to show another layout.
 
