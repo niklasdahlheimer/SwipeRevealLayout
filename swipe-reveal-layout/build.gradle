@@ -7,7 +7,7 @@ android {
         minSdkVersion 9
         targetSdkVersion 31
         versionCode 8
-        versionName "1.4.1"
+        versionName "1.6.0"
     }
     buildTypes {
         release {
@@ -35,7 +35,7 @@ afterEvaluate {
                 // You can then customize attributes of the publication as shown below.
                 groupId = 'com.github.niklasdahlheimer'
                 artifactId = 'swipereveallayout'
-                version = '1.0'
+                version = '1.6.0'
             }
         }
     }
