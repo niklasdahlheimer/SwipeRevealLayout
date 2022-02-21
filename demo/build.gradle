@@ -3,7 +3,7 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 31
     defaultConfig {
-        applicationId "com.chauthai.swipereveallayout"
+        applicationId "com.niklasdahlheimer.swipereveallayout"
         minSdkVersion 14
         targetSdkVersion 31
         versionCode 7
@@ -15,8 +15,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
-    productFlavors {
-    }
 }
 
 dependencies {
@@ -25,3 +23,4 @@ dependencies {
     implementation project(':swipe-reveal-layout')
     implementation 'androidx.recyclerview:recyclerview:1.2.1'
 }
+

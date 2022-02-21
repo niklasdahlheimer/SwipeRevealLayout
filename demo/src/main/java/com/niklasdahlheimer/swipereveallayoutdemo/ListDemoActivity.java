@@ -1,27 +1,26 @@
-package com.chauthai.swipereveallayoutdemo;
+package com.niklasdahlheimer.swipereveallayoutdemo;
 
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ListView;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Created by Chau Thai on 4/8/16.
+ * Created by Chau Thai on 4/12/16.
  */
-public class RecyclerDemoActivity extends AppCompatActivity {
-    private RecyclerView recyclerView;
-    private RecyclerAdapter adapter;
+public class ListDemoActivity extends AppCompatActivity {
+    private ListAdapter adapter;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_recycler);
+        setContentView(R.layout.activity_list);
         setupActionBar();
         setupList();
     }
@@ -49,11 +48,9 @@ public class RecyclerDemoActivity extends AppCompatActivity {
     }
 
     private void setupList() {
-        recyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-        adapter = new RecyclerAdapter(this, createList(20));
-        recyclerView.setAdapter(adapter);
+        ListView listView = (ListView) findViewById(R.id.list_view);
+        adapter = new ListAdapter(this, createList(20));
+        listView.setAdapter(adapter);
     }
 
     private List<String> createList(int n) {
